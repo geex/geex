@@ -51,8 +51,7 @@ public class LocatorControllerTest {
         locatorController = new LocatorController(
                 new Pane(),
                 labelMapProperty,
-                positionProperty,
-                graphController
+                positionProperty
         );
         locatorController.locatorIndicator = spy(new Rectangle());
 
@@ -70,8 +69,7 @@ public class LocatorControllerTest {
         LocatorController lc = new LocatorController(
                 new Pane(),
                 new SimpleObjectProperty<>(),
-                pp,
-                graphController
+                pp
         );
 
         lc.locatorIndicator = mock(Rectangle.class);

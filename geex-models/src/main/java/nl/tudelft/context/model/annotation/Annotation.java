@@ -135,6 +135,15 @@ public class Annotation {
         return start;
     }
 
+    /**
+     * Gets the end position of the annotation.
+     *
+     * @return The end position
+     */
+    public int getEnd() {
+        return end;
+    }
+
 
     @Override
     public boolean equals(final Object o) {
