@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -167,8 +166,8 @@ public class LocatorController {
         StackGraph currentGraph = graphController.getCurrentGraph();
 
         if (currentGraph != null) {
-            Set<DefaultNode> mutations = currentGraph.vertexSet().stream()
-                    .filter(node -> node instanceof GraphNode).collect(Collectors.toSet());
+            List<DefaultNode> mutations = currentGraph.vertexSet().stream()
+                    .filter(node -> node instanceof GraphNode).collect(Collectors.toList());
 
             int max = currentGraph.vertexSet().stream()
                     .mapToInt(DefaultNode::getRefEndPosition)
