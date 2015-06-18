@@ -93,7 +93,7 @@ public class Node extends DefaultNode {
     @Override
     public void setAnnotations(final AnnotationMap annotationMap) {
         if (sources.contains("TKK_REF")) {
-            annotations = annotationMap.subMap(refStartPosition, refEndPosition).values().stream()
+            annotations = annotationMap.annotationsBetween(refStartPosition, refEndPosition).values().stream()
                     .flatMap(Collection::stream)
                     .collect(Collectors.toList());
         }

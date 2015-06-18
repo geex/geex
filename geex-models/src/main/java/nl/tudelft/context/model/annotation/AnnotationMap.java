@@ -31,14 +31,14 @@ public class AnnotationMap extends TreeMap<Integer, List<Annotation>> {
     }
 
     /**
-     * Inclusive subMap.
+     * Get annotations between ref start and end position.
      *
-     * @param fromKey From which key (inclusive)
-     * @param toKey   To which key (inclusive)
-     * @return        The created subMap
+     * @param refStart From which ref start (inclusive)
+     * @param refEnd   To which ref end (inclusive)
+     * @return Annotations between ref start and end position
      */
-    public NavigableMap<Integer, List<Annotation>> subMap(final Integer fromKey, final Integer toKey) {
-        return subMap(fromKey, true, toKey, true);
+    public NavigableMap<Integer, List<Annotation>> annotationsBetween(final Integer refStart, final Integer refEnd) {
+        return subMap(refStart, true, refEnd, true);
     }
 
 
