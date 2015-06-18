@@ -1,32 +1,34 @@
 package nl.tudelft.context.model.annotation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author Jasper Nieuwdorp
  * @version 1.0
  * @since 21-5-2015
  */
-public class AnnotationMap extends TreeMap<Integer, List<Annotation>> {
+public class AnnotationMap {
+
+    TreeMap<Integer, List<Annotation>> annotationsByStart;
 
     /**
-     * Add annotations to the AnnotationMap.
+     * Create annotation map based on the annotations indexed by ref start and ref end.
      *
-     * @param annotation the annotation that should be added
+     * @param annotations List containing annotations.
      */
-    public void addAnnotation(final Annotation annotation) {
-        int start = annotation.getStart();
-        List<Annotation> annotationList = get(start);
-        if (annotationList == null) {
-            annotationList = new ArrayList<>();
-            put(start, annotationList);
-        }
+    public AnnotationMap(List<Annotation> annotations) {
 
-        annotationList.add(annotation);
+        TreeMap<Integer, Annotation> test = annotations.stream().collect(Collectors.toMap(
+                Annotation::getStart,
+                Function.identity(),
+                (v1, v2) -> v1,
+                TreeMap::new
+        ));
 
     }
 

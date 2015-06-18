@@ -3,6 +3,8 @@ package nl.tudelft.context.model.annotation;
 import nl.tudelft.context.model.Parser;
 
 import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -22,16 +24,16 @@ public class AnnotationParser extends Parser<AnnotationMap> {
     public AnnotationMap parse(final BufferedReader... readerList) {
         BufferedReader reader = readerList[0];
         Scanner sc = new Scanner(reader);
-        AnnotationMap annotationMap = new AnnotationMap();
+        List<Annotation> annotations = new ArrayList<>();
         String line;
         String fileSplitBy = "\\t";
         while (sc.hasNextLine() && !isCancelled()) {
             line = sc.nextLine();
             String[] splitLine = line.split(fileSplitBy);
-            annotationMap.addAnnotation(getAnnotation(splitLine));
+            annotations.add(getAnnotation(splitLine));
         }
 
-        return annotationMap;
+        return new AnnotationMap(annotations);
     }
 
     /**

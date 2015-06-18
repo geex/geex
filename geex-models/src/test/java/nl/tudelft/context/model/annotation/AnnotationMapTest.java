@@ -3,6 +3,8 @@ package nl.tudelft.context.model.annotation;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -23,9 +25,7 @@ public class AnnotationMapTest {
     public static void BeforeClass() {
         annotation1 = new Annotation("seqId", "source", "type", 0, 1, 0f, 'A', 'B', "attributes");
         annotation2 = new Annotation("seqId1", "source1", "type1", 2, 3, 1f, 'C', 'D', "attributes2");
-        annotationMap1 = new AnnotationMap();
-        annotationMap1.addAnnotation(annotation1);
-        annotationMap1.addAnnotation(annotation2);
+        annotationMap1 = new AnnotationMap(Arrays.asList(annotation1, annotation2));
     }
 
     @Test

@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,9 +29,7 @@ public class AnnotationParserTest {
         annotation1 = new Annotation("seqId", "source", "type", 0, 1, 0f, '+', '.', "attributes=1;A=lotofthem; (1 or 3)");
         annotation2 = new Annotation("seqId1", "source1", "type1", 2, 3, 1f, '-', '.', "attributes=2;B=evenmore; (1 or 4)");
 
-        annotationMap1 = new AnnotationMap();
-        annotationMap1.addAnnotation(annotation1);
-        annotationMap1.addAnnotation(annotation2);
+        annotationMap1 = new AnnotationMap(Arrays.asList(annotation1, annotation2));
 
         annotationFile = new File(AnnotationParserTest.class.getResource("/annotation/test.gff").getPath());
     }
